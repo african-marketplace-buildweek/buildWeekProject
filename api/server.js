@@ -21,7 +21,7 @@ server.use(cors())
 
 // server.use('/api/users', UsersRouter)
 
-server.get('/', (req, res) => {
+server.get('/api/test', (req, res) => {
   const thing = {
     thingy: 'thingy'
   }
