@@ -27,6 +27,12 @@ server.get('/api/test', (req, res) => {
   }
   res.json(thing)
 })
+server.get('/api/test2', (req, res) => {
+  const thing = {
+    thingy: 'thingy2'
+  }
+  res.json(thing)
+})
 
 //test
 
