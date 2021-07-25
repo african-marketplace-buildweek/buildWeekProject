@@ -12,7 +12,7 @@ exports.up = async (knex) => {
       items.increments('item_id')
       items.string('item_name', 200).notNullable()
       items.string('item_category').notNullable()
-      items.integer('item_price').notNullable()
+      items.float('item_price').notNullable()
       items.string('item_description', 300).notNullable()
     })
 
