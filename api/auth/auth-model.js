@@ -1,7 +1,7 @@
 // const db = require('../data/db-config')
 
 function findBy() {
-    return 'getAll wired'
+    return 'findBy wired'
 }
 
 module.exports = {
