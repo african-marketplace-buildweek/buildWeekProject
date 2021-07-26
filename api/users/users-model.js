@@ -10,7 +10,24 @@ async function insertUser(user) {
   return newUserObject // { user_id: 7, username: 'foo', password: 'xxxxxxx' }
 }
 
+function returnUserDummyData() {
+    const userDummyData =   [
+      { 
+        username: 'harry',
+        password: '1234',
+        user_picture: 'https://upload.wikimedia.org/wikipedia/en/d/d7/Harry_Potter_character_poster.jpg'
+      },
+      { 
+        username: 'hermione',
+        password: '1234',
+        user_picture: 'https://static.wikia.nocookie.net/characters/images/a/a5/Latest_%2810%29.jpg/revision/latest?cb=20141230074301'
+      }
+    ]
+    return userDummyData
+}
+
 module.exports = {
     getAllUsers,
-    insertUser
+    insertUser,
+    returnUserDummyData
 }

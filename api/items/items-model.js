@@ -22,16 +22,24 @@ function deleteItem() {
 
 function returnItemDummyData() {
     const itemDummyData =   [
-      { 
-        username: 'harry',
-        password: '1234',
-        user_picture: 'https://upload.wikimedia.org/wikipedia/en/d/d7/Harry_Potter_character_poster.jpg'
-      },
-      { 
-        username: 'hermione',
-        password: '1234',
-        user_picture: 'https://static.wikia.nocookie.net/characters/images/a/a5/Latest_%2810%29.jpg/revision/latest?cb=20141230074301'
-      }
+        { 
+            item_name: 'Eggs',
+            item_category: 'Animal Products',
+            item_price: 2,
+            item_description: 'Fresh, organic, cage-free eggs'
+          },
+          { 
+            item_name: 'Agwedde Beans',
+            item_category: 'Beans',
+            item_price: 1,
+            item_description: 'Flavorful, locally-grown, cage-free beans'
+          },
+          { 
+            item_name: 'Cabbages',
+            item_category: 'Vegetable',
+            item_price: 1.5,
+            item_description: 'Crisp, round, cage-free cabbages'
+          }
     ]
     return itemDummyData
 }
