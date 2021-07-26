@@ -12,11 +12,16 @@ router.get('/', async (req, res, next) => {
 
 router.get('/itemDummyData', async (req, res, next) => {
     try {
-        const item = await Items.returnItemDummyData()
-        res.json(item)
+        res.status(201).json(await Items.insertItem(req.body))
     } catch (err) {
         next(err)
     }
+    // try {
+    //     const item = await Items.returnItemDummyData()
+    //     res.json(item)
+    // } catch (err) {
+    //     next(err)
+    // }
 })
 
 router.get('/:id', async (req, res, next) => {

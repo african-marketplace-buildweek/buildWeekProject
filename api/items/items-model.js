@@ -8,8 +8,10 @@ function findItemById() {
     return 'findItemById wired'
 }
 
-function insertItem() {
-    return 'addItem wired'
+async function insertItem(item) {
+    const [newItem] = await db('items')
+        .insert(item, ['item_id', 'item_name', 'item_category', 'item_price', 'item_description'])
+    return newItem
 }
 
 function updateItem() {
