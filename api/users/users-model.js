@@ -10,6 +10,11 @@ async function insertUser(user) {
   return newUserObject // { user_id: 7, username: 'foo', password: 'xxxxxxx' }
 }
 
+function findUserBy(filter) {
+  return db('users')
+    .where(filter)
+}
+
 function returnUserDummyData() {
     const userDummyData =   [
       { 
@@ -29,5 +34,6 @@ function returnUserDummyData() {
 module.exports = {
     getAllUsers,
     insertUser,
+    findUserBy,
     returnUserDummyData
 }
