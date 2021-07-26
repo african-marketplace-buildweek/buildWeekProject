@@ -1,12 +1,14 @@
+const db = require('../data/db-config')
+
 function findItems() {
-    return 'findItemBy wired'
+    return db('items')
 }
 
 function findItemById() {
     return 'findItemById wired'
 }
 
-function addItem() {
+function insertItem() {
     return 'addItem wired'
 }
 
@@ -21,7 +23,7 @@ function deleteItem() {
 module.exports = {
     findItems,
     findItemById,
-    addItem,
+    insertItem,
     updateItem,
     deleteItem
 }

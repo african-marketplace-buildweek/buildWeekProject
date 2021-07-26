@@ -21,7 +21,7 @@ router.get('/:id', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
     try {
-        const item = await Items.addItem()
+        const item = await Items.insertItem()
         res.json(item)
     } catch (err) {
         next(err)
