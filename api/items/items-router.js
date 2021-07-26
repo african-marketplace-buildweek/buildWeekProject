@@ -10,6 +10,15 @@ router.get('/', async (req, res, next) => {
     }
 })
 
+router.get('/dummyData', async (req, res, next) => {
+    try {
+        const item = await Items.returnItemDummyData()
+        res.json(item)
+    } catch (err) {
+        next(err)
+    }
+})
+
 router.get('/:id', async (req, res, next) => {
     try {
         const item = await Items.findItemById()
