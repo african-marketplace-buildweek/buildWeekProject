@@ -10,7 +10,7 @@ router.get('/', async (req, res, next) => {
     }
 })
 
-router.get('/dummyData', async (req, res, next) => {
+router.get('/itemDummyData', async (req, res, next) => {
     try {
         const item = await Items.returnItemDummyData()
         res.json(item)
