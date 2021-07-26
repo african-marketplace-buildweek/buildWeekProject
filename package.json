@@ -13,7 +13,7 @@
     "seedh": "heroku run knex seed:run -a buildweekproject",
     "test": "cross-env NODE_ENV=testing jest --watchAll --verbose --runInBand",
     "deploy": "git push heroku main",
-    "herokupush": "heroku run knex migrate:rollback -a buildweekproject && git push heroku main && heroku run knex migrate:latest -a buildweekproject",
+    "herokupush": "heroku run knex migrate:rollback -a buildweekproject && git push heroku main && heroku run knex migrate:latest -a buildweekproject && heroku run knex seed:run -a buildweekproject",
     "resetdb": "knex migrate:rollback && knex migrate:latest && knex seed:run"
   },
   "engines": {
@@ -22,10 +22,12 @@
   },
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cors": "2.8.5",
     "dotenv": "10.0.0",
     "express": "4.17.1",
     "helmet": "4.6.0",
+    "jsonwebtoken": "^8.5.1",
     "knex": "0.95.7",
     "knex-cleaner": "1.3.1",
     "pg": "8.6.0"
@@ -35,6 +37,7 @@
     "cross-env": "7.0.3",
     "eslint": "7.31.0",
     "jest": "27.0.6",
+    "jwt-decode": "^3.1.2",
     "nodemon": "2.0.12",
     "supertest": "6.1.4"
   }
