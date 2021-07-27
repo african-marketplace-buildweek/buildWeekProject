@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const Items = require('./items-model')
+const { restricted } = require('../auth/auth-middleware')
 
 router.get('/', async (req, res, next) => {
     try {
@@ -33,7 +34,7 @@ router.get('/:id', async (req, res, next) => {
     }
 })
 
-router.post('/', async (req, res, next) => {
+router.post('/', restricted, async (req, res, next) => {
     try {
         res.status(201).json(await Items.insertItem(req.body))
     } catch (err) {
