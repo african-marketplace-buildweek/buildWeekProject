@@ -3,8 +3,8 @@ const Items = require('./items-model')
 
 router.get('/', async (req, res, next) => {
     try {
-        const item = await Items.findItems()
-        res.json(item)
+        const items = await Items.findItems()
+        res.json(items)
     } catch (err) {
         next(err)
     }

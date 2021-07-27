@@ -4,6 +4,7 @@ const cors = require('cors')
 const UsersRouter = require('./users/users-router')
 const AuthRouter = require('./auth/auth-router')
 const ItemRouter = require('./items/items-router')
+const MarketRouter = require('./markets/markets_router')
 
 const server = express()
 server.use(express.json())
@@ -13,6 +14,7 @@ server.use(cors())
 server.use('/api/users', UsersRouter)
 server.use('/api/auth', AuthRouter)
 server.use('/api/items', ItemRouter)
+server.use('/api/markets', MarketRouter)
 
 server.use((err, req, res, next) => { // eslint-disable-line
   res.status(err.status || 500).json({
