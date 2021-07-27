@@ -7,14 +7,15 @@ const { checkUsernameExists } = require('../auth/auth-middleware')
 
 router.post('/register', async (req, res, next) => {
   try {
-    const { username, password, user_picture } = req.body
+    const { username, password, user_picture, market_id } = req.body
     // const rounds = process.env.BCRYPT_ROUNDS || 8
     const rounds = 8
     const hash = bcrypt.hashSync(password, rounds)
     const newUser = {
       username: username,
       password: hash,
-      user_picture: user_picture
+      user_picture: user_picture,
+      market_id: market_id
     }
 
     const dbUser = await Users.insertUser(newUser)
