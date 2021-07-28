@@ -11,6 +11,8 @@ router.get('/', async (req, res, next) => {
     }
 })
 
+//test
+
 router.get('/itemDummyData', async (req, res, next) => {
     // try {
     //     res.status(201).json(await Items.insertItem(req.body))
