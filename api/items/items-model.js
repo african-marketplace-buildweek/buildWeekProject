@@ -4,8 +4,10 @@ function findItems() {
     return db('items')
 }
 
-function findItemById() {
-    return 'findItemById wired'
+function findItemById(id) {
+    return db('items')
+        .where('item_id', id)
+        .first()
 }
 
 async function insertItem(item) {
@@ -18,8 +20,12 @@ function updateItem() {
     return 'updateItem wired'
 }
 
-function deleteItem() {
-    return 'deleteItem wired'
+async function deleteItem(id) {
+    const itemToBeDeleted = await findItemById(id)
+    await db('items')
+        .where('item_id', id)
+        .del()
+    return itemToBeDeleted
 }
 
 function returnItemDummyData() {

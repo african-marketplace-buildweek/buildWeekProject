@@ -4,7 +4,8 @@ function getAllUsers() { return db('users') }
 
 async function insertUser(user) {
   // WITH POSTGRES WE CAN PASS A "RETURNING ARRAY" AS 2ND ARGUMENT TO knex.insert/update
-  const [newUserObject] = await db('users').insert(user, ['user_id', 'username', 'password', 'market_id'])
+  const [newUserObject] = await db('users')
+    .insert(user, ['user_id', 'username', 'password', 'market_id'])
   return newUserObject
 }
 

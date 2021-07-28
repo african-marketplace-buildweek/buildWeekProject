@@ -53,8 +53,8 @@ router.put('/:id', async (req, res, next) => {
 
 router.delete('/:id', async (req, res, next) => {
     try {
-        const item = await Items.deleteItem()
-        res.json(item)
+        const itemToDelete = await Items.deleteItem(req.params.id)
+        res.json(itemToDelete)
     } catch (err) {
         next(err)
     }
