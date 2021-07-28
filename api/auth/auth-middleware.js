@@ -41,7 +41,23 @@ const checkUsernameExists = async (req, res, next) => {
     }
 }
 
+const checkUsernameAndPassword = (req, res, next) => {
+    try {
+        const { username, password } = req.body
+        if (username === undefined || password === undefined) {
+            res.status(400).json({
+                message: 'username and password are required'
+            })
+        } else {
+            next()
+        }
+    } catch (err) {
+        next(err)
+    }
+}
+
 module.exports = {
     checkUsernameExists,
-    restricted
+    restricted,
+    checkUsernameAndPassword
 }

@@ -3,9 +3,9 @@ const Users = require('../users/users-model')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const { jwtSecret } = require('../secrets/index')
-const { checkUsernameExists } = require('../auth/auth-middleware')
+const { checkUsernameExists, checkUsernameAndPassword } = require('../auth/auth-middleware')
 
-router.post('/register', async (req, res, next) => {
+router.post('/register', checkUsernameAndPassword, async (req, res, next) => {
   try {
     const { username, password, user_picture, market_id } = req.body
     // const rounds = process.env.BCRYPT_ROUNDS || 8
@@ -25,7 +25,7 @@ router.post('/register', async (req, res, next) => {
   }
 })
 
-router.post("/login", checkUsernameExists, (req, res, next) => {
+router.post("/login", checkUsernameAndPassword, checkUsernameExists, (req, res, next) => {
   if (bcrypt.compareSync(req.body.password, req.user.password)) {
     const token = buildToken(req.user)
     res.json({
