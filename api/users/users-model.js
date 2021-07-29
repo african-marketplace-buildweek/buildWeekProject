@@ -14,6 +14,13 @@ function findUserBy(filter) {
     .where(filter)
 }
 
+async function updateUser(id, user) {
+  const [updatedUser] = await db('users')
+      .update(user, ['user_id', 'username', 'market_id'])
+      .where('user_id', id)
+  return updatedUser
+}
+
 function returnUserDummyData() {
     const userDummyData =   [
       { 
@@ -36,5 +43,6 @@ module.exports = {
     getAllUsers,
     insertUser,
     findUserBy,
+    updateUser,
     returnUserDummyData
 }
