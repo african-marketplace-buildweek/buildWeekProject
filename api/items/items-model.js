@@ -12,13 +12,13 @@ function findItemById(id) {
 
 async function insertItem(item) {
     const [newItem] = await db('items')
-        .insert(item, ['item_id', 'item_name', 'item_category', 'item_price', 'item_description'])
+        .insert(item, ['item_id', 'item_name', 'item_category', 'item_price', 'item_description', 'market_id'])
     return newItem
 }
 
 async function updateItem(id, item) {
     const [updatedItem] = await db('items')
-        .update(item, ['item_id', 'item_name', 'item_category', 'item_price', 'item_description'])
+        .update(item, ['item_id', 'item_name', 'item_category', 'item_price', 'item_description', 'market_id'])
         .where('item_id', id)
     return updatedItem
 }

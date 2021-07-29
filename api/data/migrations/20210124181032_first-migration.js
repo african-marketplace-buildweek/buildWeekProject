@@ -17,6 +17,12 @@ exports.up = async (knex) => {
       items.string('item_category').notNullable()
       items.float('item_price').notNullable()
       items.string('item_description', 300).notNullable()
+      items.integer('market_id')
+        .unsigned()
+        .references('market_id')
+        .inTable('markets')
+        .onUpdate('RESTRICT')
+        .onDelete('RESTRICT')
     })
 
     .createTable('users', (users) => {
