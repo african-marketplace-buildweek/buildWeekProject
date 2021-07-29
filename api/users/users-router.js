@@ -28,4 +28,13 @@ router.put('/:id', async (req, res, next) => {
     }
 })
 
+router.delete('/:id', async (req, res, next) => {
+    try {
+        const userToDelete = await Users.deleteUser(req.params.id)
+        res.json(userToDelete)
+    } catch (err) {
+        next(err)
+    }
+})
+
 module.exports = router

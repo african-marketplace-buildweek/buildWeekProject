@@ -14,11 +14,25 @@ function findUserBy(filter) {
     .where(filter)
 }
 
+function findUserById(id) {
+  return db('users')
+      .where('user_id', id)
+      .first()
+}
+
 async function updateUser(id, user) {
   const [updatedUser] = await db('users')
       .update(user, ['user_id', 'username', 'market_id'])
       .where('user_id', id)
   return updatedUser
+}
+
+async function deleteUser(id) {
+  const userToBeDeleted = await findUserById(id)
+  await db('users')
+      .where('user_id', id)
+      .del()
+  return userToBeDeleted
 }
 
 function returnUserDummyData() {
@@ -43,6 +57,8 @@ module.exports = {
     getAllUsers,
     insertUser,
     findUserBy,
+    findUserById,
     updateUser,
+    deleteUser,
     returnUserDummyData
 }
