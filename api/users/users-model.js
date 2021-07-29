@@ -22,7 +22,7 @@ function findUserById(id) {
 
 async function updateUser(id, user) {
   const [updatedUser] = await db('users')
-      .update(user, ['user_id', 'username', 'market_id'])
+      .update(user, ['user_id', 'username', 'user_picture', 'market_id'])
       .where('user_id', id)
   return updatedUser
 }
