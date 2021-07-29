@@ -16,8 +16,11 @@ async function insertItem(item) {
     return newItem
 }
 
-function updateItem() {
-    return 'updateItem wired'
+async function updateItem(id, item) {
+    const [updatedItem] = await db('items')
+        .update(item, ['item_id', 'item_name', 'item_category', 'item_price', 'item_description'])
+        .where('item_id', id)
+    return updatedItem
 }
 
 async function deleteItem(id) {

@@ -46,7 +46,7 @@ router.post('/', restricted, async (req, res, next) => {
 
 router.put('/:id', async (req, res, next) => {
     try {
-        const item = await Items.updateItem()
+        const item = await Items.updateItem(req.params.id, req.body)
         res.json(item)
     } catch (err) {
         next(err)
