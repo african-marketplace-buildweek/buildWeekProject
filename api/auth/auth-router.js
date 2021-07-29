@@ -3,11 +3,11 @@ const Users = require('../users/users-model')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const { jwtSecret } = require('../secrets/index')
-const { checkUsernameExists, checkUsernameAndPassword, checkMarketId } = require('../auth/auth-middleware')
+const { checkUsernameExists, checkUsernameAndPassword } = require('../auth/auth-middleware')
 
-router.post('/register', checkUsernameAndPassword, checkMarketId, async (req, res, next) => {
+router.post('/register', checkUsernameAndPassword, async (req, res, next) => {
   try {
-    const { username, password, user_picture, market_id } = req.body
+    const { username, password, user_picture } = req.body
     // const rounds = process.env.BCRYPT_ROUNDS || 8
     const rounds = 8
     const hash = bcrypt.hashSync(password, rounds)
@@ -15,7 +15,6 @@ router.post('/register', checkUsernameAndPassword, checkMarketId, async (req, re
       username: username,
       password: hash,
       user_picture: user_picture,
-      market_id: market_id
     }
 
     const dbUser = await Users.insertUser(newUser)
@@ -44,7 +43,6 @@ function buildToken(user) {
   const payload = {
     subject: user.user_id,
     username: user.username,
-    role_name: user.role_name,
   }
   const options = {
     expiresIn: '1d',

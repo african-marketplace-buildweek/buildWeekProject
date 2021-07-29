@@ -31,12 +31,6 @@ exports.up = async (knex) => {
       users.string('password', 200).notNullable()
       users.string('user_picture')
       users.timestamps(false, true)
-      users.integer('market_id')
-        .unsigned()
-        .references('market_id')
-        .inTable('markets')
-        .onUpdate('RESTRICT')
-        .onDelete('RESTRICT')
     })
     
     .createTable('users_items', (users_items) => {

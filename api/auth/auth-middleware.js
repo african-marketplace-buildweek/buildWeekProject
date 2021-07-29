@@ -56,24 +56,23 @@ const checkUsernameAndPassword = (req, res, next) => {
     }
 }
 
-const checkMarketId = (req, res, next) => {
-    try {
-        const { market_id } = req.body
-        if (market_id === undefined) {
-            res.status(400).json({
-                message: 'market_id is required'
-            })
-        } else {
-            next()
-        }
-    } catch (err) {
-        next(err)
-    }
-}
+// const checkMarketId = (req, res, next) => {
+//     try {
+//         const { market_id } = req.body
+//         if (market_id === undefined) {
+//             res.status(400).json({
+//                 message: 'market_id is required'
+//             })
+//         } else {
+//             next()
+//         }
+//     } catch (err) {
+//         next(err)
+//     }
+// }
 
 module.exports = {
     checkUsernameExists,
     restricted,
     checkUsernameAndPassword,
-    checkMarketId
 }
