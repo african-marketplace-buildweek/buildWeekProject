@@ -3,12 +3,6 @@ exports.up = async (knex) => {
     .createTable('markets', (markets) => {
       markets.increments('market_id')
       markets.string('market_name', 200).notNullable()
-      // markets.integer('user_id')
-      // .unsigned()
-      // .references('user_id')
-      // .inTable('users')
-      // .onUpdate('RESTRICT')
-      // .onDelete('RESTRICT')
     })
 
     .createTable('items', (items) => {
